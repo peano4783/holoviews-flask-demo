@@ -3,9 +3,6 @@ STEP 3
 Making an interactive plot
 
 The code uses the file /templates/step3_index.html
-
-Watch carefully for bokeh_version: it must match the one that is in your system.
-Use "pip show bokeh" to determine the version of Bokeh in your system.
 """
 
 from flask import Flask, request, render_template, abort, Response, redirect
@@ -13,6 +10,7 @@ import pandas as pd
 import numpy as np
 from bokeh.embed import components
 import holoviews as hv
+import bokeh
 hv.extension('bokeh')
 
 app = Flask(__name__)
@@ -45,7 +43,7 @@ def index_page():
 
     return render_template('step3_index.html',
                            title='My flask application',
-                           bokeh_version='2.4.3',
+                           bokeh_version=bokeh.__version__,
                            dataset_name = dataset_name,
                            scatter_script = scatter_script,
                            scatter_div = scatter_div,
