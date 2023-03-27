@@ -37,7 +37,7 @@
       <div class="row">
         <label class="col-sm-2">Lower Spec Limit:</label>
         <div class="col-sm-3">
-            <input name="lsl" class="form-control" type="text" list="lsl_list" value="{{lsl}}"/>
+            <input name="lsl" class="form-control" type="text" list="lsl_list" value="{{lsl}}" placeholder="None"/>
             <datalist id="lsl_list">
                 <option>(None)</option>
                 <option>5.5</option>
@@ -50,7 +50,7 @@
       <div class="row">
         <label class="col-sm-2">Upper Spec Limit:</label>
         <div class="col-sm-3">
-            <input name="usl" class="form-control" type="text" list="usl_list" value="{{usl}}"/>
+            <input name="usl" class="form-control" type="text" list="usl_list" value="{{usl}}" placeholder="None"/>
             <datalist id="usl_list">
                 <option>(None)</option>
                 <option>8.5</option>
@@ -114,13 +114,6 @@
         <div class="col-sm-6 offset-sm-2">
             <input name="show_distr" id="show_distr" type="checkbox" {{show_distr}} value="{{show_distr}}"/>
             <label for="show_distr">Show distribution</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 offset-sm-2">
-            <input name="hist_distr_same_graph" id="hist_distr_same_graph" type="checkbox" {{hist_distr_same_graph}} value="{{hist_distr_same_graph}}"/>
-            <label for="hist_distr_same_graph">On the same graph</label>
         </div>
       </div>
 

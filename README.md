@@ -11,6 +11,7 @@ Alternatively, install the following packages in your environment manually:
 ```commandline
 pip install holoviews
 pip install flask
+pip install scipy
 ```
 
 ## Running
