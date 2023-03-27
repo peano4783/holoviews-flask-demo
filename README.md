@@ -47,7 +47,9 @@ LSL = 740, USL = 760
 
 ## Sample output (web app)
 This is what a fragment of sample output at Step 4 looks like:
+
 ![Graphs for PCI with changepoint](assets/img/changepoint_plots.png "Changepoint + PCI")
+
 In fact, this graph makes sense in terms of Process Capability Analysis.
 The top graph is the process; the bottom graph is the three
 [procecess capability indices](https://en.wikipedia.org/wiki/Process_capability_index).
