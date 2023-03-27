@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>  div {  padding-bottom: 1px;   }   </style>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/{{bokeh_version}}/bokeh.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/{{bokeh_version}}/bokeh-widgets.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/{{bokeh_version}}/bokeh-tables.js"></script>
+
+<body>
+
+    <form method="post">
+    <div class="container">
+      <div class="row">
+        <label class="col-sm-6"><h2>{{title}}</h2></label>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Dataset:</label>
+        <div class="col-sm-4">
+            <input name="dataset_name" class="form-control" type="text" list="dataset_name_list" value="{{dataset_name}}"/>
+            <datalist id="dataset_name_list">
+                <option>softdrinkco2.csv</option>
+                <option>salazar.csv</option>
+                <option>changepoint.csv</option>
+            </datalist>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Lower Spec Limit:</label>
+        <div class="col-sm-3">
+            <input name="lsl" class="form-control" type="text" list="lsl_list" value="{{lsl}}"/>
+            <datalist id="lsl_list">
+                <option>(None)</option>
+                <option>5.5</option>
+                <option>740</option>
+                <option>100</option>
+            </datalist>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Upper Spec Limit:</label>
+        <div class="col-sm-3">
+            <input name="usl" class="form-control" type="text" list="usl_list" value="{{usl}}"/>
+            <datalist id="usl_list">
+                <option>(None)</option>
+                <option>8.5</option>
+                <option>760</option>
+                <option>110</option>
+            </datalist>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <label class="col-sm-2">Scatterplot options:</label>
+        <label class="col-sm-2">Point size:</label>
+        <div class="col-sm-1">
+            <input name="pointsize" class="form-control" type="number" value="{{pointsize}}"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-2">
+            <input name="connect_dots" id="connect_dots" type="checkbox" {{connect_dots}} value="{{connect_dots}}"/>
+            <label for="connect_dots">Connect the dots</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Process capability indices:</label>
+        <div class="col-sm-1">
+            <input name="show_Cp" id="show_Cp" type="checkbox" {{show_Cp}} value="{{show_Cp}}"/>
+            <label for="show_Cp">Cp</label>
+        </div>
+        <div class="col-sm-1">
+            <input name="show_Cpk" id="show_Cpk" type="checkbox" {{show_Cpk}} value="{{show_Cpk}}"/>
+            <label for="show_Cpk">Cpk</label>
+        </div>
+        <div class="col-sm-1">
+            <input name="show_Cpm" id="show_Cpm" type="checkbox" {{show_Cpm}} value="{{show_Cpm}}"/>
+            <label for="show_Cpm">Cpm</label>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+
+
+      <div class="row">
+        <label class="col-sm-2">Histogram options:</label>
+        <div class="col-sm-6">
+            <input name="show_hist" id="show_hist" type="checkbox" {{show_hist}} value="{{show_hist}}"/>
+            <label for="show_hist">Show histogram</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2 offset-sm-2">Number of bins:</label>
+        <div class="col-sm-1">
+            <input name="nbins" class="form-control" type="number" value="{{nbins}}"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-2">
+            <input name="show_distr" id="show_distr" type="checkbox" {{show_distr}} value="{{show_distr}}"/>
+            <label for="show_distr">Show distribution</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-2">
+            <input name="hist_distr_same_graph" id="hist_distr_same_graph" type="checkbox" {{hist_distr_same_graph}} value="{{hist_distr_same_graph}}"/>
+            <label for="hist_distr_same_graph">On the same graph</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2 offset-sm-4">
+          <input class="form-control btn-success" type="submit" name="submit_button" value="Submit">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <label class="col-sm-2">Scatterplot:</label>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          {{ scatter_div|safe }}
+          {{ scatter_script|safe }}
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-2">Histogram:</label>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          {{ hist_div|safe }}
+          {{ hist_script|safe }}
+        </div>
+      </div>
+
+    </div>
+
+
+    </form>
+
+</body>
+
+</html>
+
+

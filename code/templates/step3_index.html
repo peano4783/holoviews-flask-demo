@@ -7,10 +7,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <style>
-        .form-group {
-    margin-bottom: 15px; }
-    </style>
+    <style>  div {  padding-bottom: 1px;   }   </style>
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bokeh/{{bokeh_version}}/bokeh.min.js"></script>
@@ -30,10 +27,24 @@
         <div class="col-sm-6">
             <input name="dataset_name" class="form-control" type="text" list="dataset_name_list" value="{{dataset_name}}"/>
             <datalist id="dataset_name_list">
-                <option>softdrinkco2</option>
-                <option>salazar</option>
-                <option>pci-simulated</option>
+                <option>softdrinkco2.csv</option>
+                <option>salazar.csv</option>
+                <option>changepoint.csv</option>
             </datalist>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Point size (Scatterplot):</label>
+        <div class="col-sm-6">
+            <input name="pointsize" class="form-control" type="number" value="{{pointsize}}"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-2">Number of bins (Histogram):</label>
+        <div class="col-sm-6">
+            <input name="nbins" class="form-control" type="number" value="{{nbins}}"/>
         </div>
       </div>
 
@@ -44,8 +55,11 @@
       </div>
 
 
+
       <div class="row">
         <label class="col-sm-2">Scatterplot:</label>
+      </div>
+      <div class="row">
         <div class="col-sm-6">
           {{ scatter_div|safe }}
           {{ scatter_script|safe }}
@@ -53,6 +67,8 @@
       </div>
       <div class="row">
         <label class="col-sm-2">Histogram:</label>
+      </div>
+      <div class="row">
         <div class="col-sm-6">
           {{ hist_div|safe }}
           {{ hist_script|safe }}

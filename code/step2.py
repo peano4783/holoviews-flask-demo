@@ -1,6 +1,6 @@
 """
 STEP 2
-Creating a simple web app and display two plots at a time
+Creating a simple web app and display two plots on the same page
 
 The code uses the file /templates/step2_index.html
 
@@ -10,9 +10,8 @@ https://www.gcptutorials.com/post/creating-charts-with-bokeh-and-flask
 from flask import Flask, request, render_template, abort, Response, redirect
 import pandas as pd
 import numpy as np
-from bokeh.embed import components
-import holoviews as hv
 import bokeh
+import holoviews as hv
 hv.extension('bokeh')
 
 app = Flask(__name__)
@@ -22,24 +21,21 @@ app = Flask(__name__)
 def index_page():
     df = pd.read_csv('../data/softdrinkco2.csv')
 
-    # Isolate the first column to be our dataset:
-    data = df.iloc[:, 0]
-
     # Plotting a scatterplot
-    scatter = hv.Scatter(data).opts(width=500, height=400, tools=['hover'])
+    scatter = hv.Scatter(df).opts(width=500, height=300, size=5, tools=['hover'])
 
     # Plotting a Histogram
-    frequencies, edges = np.histogram(data, bins=15)
-    hist = hv.Histogram((edges, frequencies)).opts(width=500, height=400, tools=['hover'])
+    frequencies, edges = np.histogram(df, bins=15)
+    hist = hv.Histogram((edges, frequencies)).opts(width=500, height=300, tools=['hover'])
 
     bokeh_scatter = hv.render(scatter)
-    scatter_script, scatter_div = components(bokeh_scatter)
+    scatter_script, scatter_div = bokeh.embed.components(bokeh_scatter)
 
     bokeh_hist = hv.render(hist)
-    hist_script, hist_div = components(bokeh_hist)
+    hist_script, hist_div = bokeh.embed.components(bokeh_hist)
 
     return render_template('step2_index.html',
-                           title='My flask application',
+                           title='My Flask application',
                            bokeh_version=bokeh.__version__,
                            scatter_script = scatter_script,
                            scatter_div = scatter_div,

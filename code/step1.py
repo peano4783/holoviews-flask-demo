@@ -13,15 +13,12 @@ hv.extension('bokeh')
 
 df = pd.read_csv('../data/softdrinkco2.csv')
 
-# Isolate the first column to be our dataset:
-data = df.iloc[:, 0]
-
 # Plotting a scatterplot
-scatter = hv.Scatter(data).opts(width=500, height=400, tools=['hover'])
+scatter = hv.Scatter(df).opts(width=500, height=400, size=5, tools=['hover'])
 hv.save(scatter, '../output/step1_scatter.html')
 
 # Plotting a Histogram
-frequencies, edges = np.histogram(data, bins=15)
+frequencies, edges = np.histogram(df, bins=15)
 hist = hv.Histogram((edges, frequencies)).opts(width=500, height=400, tools=['hover'])
 
 hv.save(hist, '../output/step1_hist.html')
