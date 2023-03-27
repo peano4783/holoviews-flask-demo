@@ -1,6 +1,6 @@
 """
 STEP 2
-Creating a simple web app and display two plots on the same page
+Creating a simple web app and displaying two plots on the same page
 
 The code uses the file /templates/step2_index.html
 

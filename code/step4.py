@@ -26,7 +26,7 @@ def index_page():
     show_Cpm = ""
     show_hist = "checked"
     nbins = 15
-    show_distr = "checked"
+    show_distr = ""
 
     if request.method == 'POST':
         dataset_name = request.form.get('dataset_name')
@@ -72,13 +72,15 @@ def index_page():
 
     # Evaluating Cp, Cpk and Cpm values:
     Cps, Cpks, Cpms = [], [], []
-    if show_Cp or show_Cpk:
+    if show_Cp or show_Cpk or show_Cpm:
         for i in range(len(df.iloc[:, 0])):
             m = df.iloc[:i+1, 0].mean()
             s = df.iloc[:i+1, 0].std()
             if lsl and usl:
                 Cps.append((usl-lsl)/(6*s))
                 Cpks.append(min((m - lsl)/(3 * s), (usl - m)/(3 * s)))
+                T = (lsl + usl) / 2
+                Cpms.append(Cps[-1]/np.sqrt(1+((m-T)/s)**2))
             elif lsl:
                 Cps.append((m - lsl)/(3 * s))
                 Cpks.append(Cps[-1])
@@ -98,6 +100,12 @@ def index_page():
             if connect_dots:
                 Cpk_plot = Cpk_plot * hv.Curve(Cpk_series)
             C_plot = C_plot * Cpk_plot if C_plot else Cpk_plot
+        if Cpms and show_Cpm:
+            Cpm_series = pd.DataFrame({'Cpm': Cpms})
+            Cpm_plot = hv.Scatter(Cpm_series, label='Cpm').opts(width=600, height=300, size=pointsize, tools=['hover'])
+            if connect_dots:
+                Cpm_plot = Cpm_plot * hv.Curve(Cpm_series)
+            C_plot = C_plot * Cpm_plot if C_plot else Cpm_plot
         if C_plot:
             scatter = hv.Layout(scatter + C_plot).cols(1)
 
@@ -138,7 +146,7 @@ def index_page():
         hist_script, hist_div = bokeh.embed.components(bokeh_hist)
 
     return render_template('step4_index.html',
-                           title='My Flask application',
+                           title='Process Capability Indices (Six Sigma)',
                            bokeh_version=bokeh.__version__,
                            dataset_name = dataset_name,
                            lsl = lsl,

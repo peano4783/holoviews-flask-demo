@@ -1,6 +1,6 @@
 """
 STEP 3
-Building a simple interactive plot
+Creating a web app with a plot and adding interactivity
 
 The code uses the file /templates/step3_index.html
 """

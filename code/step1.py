@@ -1,7 +1,7 @@
 """
 STEP 1
 Simple plot rendering
-Each plot is saved in a separate HTML file
+Renders two interactive plots; each plot is saved in a separate HTML file.
 
 HoloViews reference: https://holoviews.org/index.html
 """
