@@ -23,7 +23,17 @@ Run and explore these files to learn using HoloViews with Flask in a step-by-ste
 - `code/step1.py`: Step 1. Rendering two HoloViews plots; each plot is saved in a separate HTML file; pure HoloViews, no Flask yet
 - `code/step2.py`: Step 2. Creating a simple web app and displaying two plots on the same page
 - `code/step3.py`: Step 3. Creating a web app with a plot and adding interactivity
-- `code/step4.py`: Step 4. A full-scall web app for performing process capability analysis
+- `code/step4.py`: Step 4. A full-scale web app for performing process capability analysis
+
+When running `step2.py`, `step3.py`, and `step4.py` observe the console output
+for the URL where the web is running. For example, the output of
+```commandline
+ * Serving Flask app 'step2'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+```
+means that you must open http://127.0.0.1:5000 in your browser to see the app.
 
 ## HTML templates
 It is common for a Flask application to have at least one HTML template.
@@ -58,3 +68,9 @@ this finds its reflection in the indices in the bottom graph.
 
 This example is aimed at demonstrating the use of HoloViews + Flask bundle
 in real-life data visualization and analysis.
+
+## References
+- [HoloViews](https://holoviews.org/index.html)
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+- [Creating Charts with Bokeh and Flask](https://www.gcptutorials.com/post/creating-charts-with-bokeh-and-flask)

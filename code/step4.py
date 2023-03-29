@@ -1,11 +1,9 @@
 """
 STEP 4
-Building an advanced interactive plot
-
-The code uses the file /templates/step4_index.html
+A full-scale web app for performing process capability analysis
 """
 
-from flask import Flask, request, render_template, abort, Response, redirect
+from flask import Flask, render_template, request
 import pandas as pd
 import numpy as np
 import bokeh
@@ -17,6 +15,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index_page():
+    # Setting default parameters
     dataset_name = 'softdrinkco2.csv'
     lsl, usl = "", ""
     connect_dots = ""
@@ -28,6 +27,7 @@ def index_page():
     nbins = 15
     show_distr = ""
 
+    # Reading default parameters from the web form when the user clicks on Submit
     if request.method == 'POST':
         dataset_name = request.form.get('dataset_name')
         lsl = request.form.get('lsl')
@@ -140,6 +140,7 @@ def index_page():
     bokeh_scatter = hv.render(scatter)
     scatter_script, scatter_div = bokeh.embed.components(bokeh_scatter)
 
+    # If no hist is due to be displayed, we leave the placeholders for both JavaScript and HTML empty.
     hist_script, hist_div = "", ""
     if hist:
         bokeh_hist = hv.render(hist)
@@ -165,4 +166,4 @@ def index_page():
                            hist_div = hist_div)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True)

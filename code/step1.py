@@ -1,9 +1,6 @@
 """
 STEP 1
-Simple plot rendering
-Renders two interactive plots; each plot is saved in a separate HTML file.
-
-HoloViews reference: https://holoviews.org/index.html
+Rendering two HoloViews plots; each plot is saved in a separate HTML file; pure HoloViews, no Flask yet
 """
 
 import pandas as pd
@@ -11,14 +8,17 @@ import numpy as np
 import holoviews as hv
 hv.extension('bokeh')
 
+# Reading data from file
 df = pd.read_csv('../data/softdrinkco2.csv')
 
-# Plotting a scatterplot
+# Generating a HoloViews scatterplot
 scatter = hv.Scatter(df).opts(width=500, height=400, size=5, tools=['hover'])
+# Saving the scatterplot in an HTML file
 hv.save(scatter, '../output/step1_scatter.html')
 
-# Plotting a Histogram
+# Generating a HoloViews histogram
 frequencies, edges = np.histogram(df, bins=15)
 hist = hv.Histogram((edges, frequencies)).opts(width=500, height=400, tools=['hover'])
 
+# Saving the histogram in an HTML file
 hv.save(hist, '../output/step1_hist.html')
