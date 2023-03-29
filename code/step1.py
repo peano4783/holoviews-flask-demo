@@ -13,12 +13,11 @@ df = pd.read_csv('../data/softdrinkco2.csv')
 
 # Generating a HoloViews scatterplot
 scatter = hv.Scatter(df).opts(width=500, height=400, size=5, tools=['hover'])
-# Saving the scatterplot in an HTML file
-hv.save(scatter, '../output/step1_scatter.html')
 
 # Generating a HoloViews histogram
 frequencies, edges = np.histogram(df, bins=15)
 hist = hv.Histogram((edges, frequencies)).opts(width=500, height=400, tools=['hover'])
 
-# Saving the histogram in an HTML file
+# Saving the scatterplot and the histogram in HTML files
+hv.save(scatter, '../output/step1_scatter.html')
 hv.save(hist, '../output/step1_hist.html')

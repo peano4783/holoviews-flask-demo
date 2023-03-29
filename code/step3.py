@@ -17,9 +17,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index_page():
     # Defining default parameters of the user interface elements
-    dataset_name = 'softdrinkco2.csv'
-    pointsize = 4
-    nbins = 15
+    dataset_name, pointsize, nbins = 'softdrinkco2.csv', 4, 15
 
     # This if clause is evoked when the user clicks on the Submit button.
     # We grab the user parameters value from the webpage form.
@@ -38,13 +36,10 @@ def index_page():
     frequencies, edges = np.histogram(df, bins=nbins)
     hist = hv.Histogram((edges, frequencies)).opts(width=600, height=300, tools=['hover'])
 
-    # Distilling the HoloViews objects scatter and hist into Bokeh objects
-    bokeh_scatter = hv.render(scatter)
-    bokeh_hist = hv.render(hist)
-
-    # Generating JavaScript and HTML for the Bokeh objects
-    scatter_script, scatter_div = bokeh.embed.components(bokeh_scatter)
-    hist_script, hist_div = bokeh.embed.components(bokeh_hist)
+    # Distilling the HoloViews objects scatter and hist into Bokeh objects and
+    # generating JavaScript and HTML for the Bokeh objects
+    scatter_script, scatter_div = bokeh.embed.components(hv.render(scatter))
+    hist_script, hist_div = bokeh.embed.components(hv.render(hist))
 
     # Using step3_index.html template to generate an actual HTML page.
     # JavaScript and HTML of the graphs are passed to the template among other parameters.

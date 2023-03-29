@@ -26,13 +26,10 @@ def index_page():
     frequencies, edges = np.histogram(df, bins=15)
     hist = hv.Histogram((edges, frequencies)).opts(width=500, height=300, tools=['hover'])
 
-    # Distilling the HoloViews objects scatter and hist into Bokeh objects
-    bokeh_scatter = hv.render(scatter)
-    bokeh_hist = hv.render(hist)
-
-    # Generating JavaScript and HTML for the Bokeh objects
-    scatter_script, scatter_div = bokeh.embed.components(bokeh_scatter)
-    hist_script, hist_div = bokeh.embed.components(bokeh_hist)
+    # Distilling the HoloViews objects scatter and hist into Bokeh objects and
+    # generating JavaScript and HTML for the Bokeh objects
+    scatter_script, scatter_div = bokeh.embed.components(hv.render(scatter))
+    hist_script, hist_div = bokeh.embed.components(hv.render(hist))
 
     # Using step2_index.html template to generate an actual HTML page.
     # JavaScript and HTML of the graphs are passed to the template among other parameters.

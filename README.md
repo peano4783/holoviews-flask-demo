@@ -71,6 +71,7 @@ in real-life data visualization and analysis.
 
 ## References
 - [HoloViews](https://holoviews.org/index.html)
+- [HoloViews Gallery](https://holoviews.org/gallery/)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - [Creating Charts with Bokeh and Flask](https://www.gcptutorials.com/post/creating-charts-with-bokeh-and-flask)
