@@ -59,7 +59,7 @@ def index_page():
             usl + range_diff*0.1 if usl and (usl>df.iloc[:, 0].max()) else None)
 
     # Plotting a scatterplot
-    scatter = hv.Scatter(df).opts(width=600, height=300, ylim=lims, size=pointsize, tools=['hover'])
+    scatter = hv.Scatter(df).opts(width=600, height=300, ylim=lims, xlabel="Time", ylabel="Reading", size=pointsize, tools=['hover'])
     # Connecting scatterplot dots if necessary
     if connect_dots:
         scatter = scatter * hv.Curve(df)
