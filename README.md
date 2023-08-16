@@ -1,9 +1,8 @@
 # HoloViews + Flask mini-tutorial
 HoloViews data visualization in a Flask web app
 
-## Video (in Russian)
-[Визуализация данных в веб-приложении с помощью HoloViews](https://www.youtube.com/watch?v=tjY73jE2EiY) (YouTube)
-(Russian: Data Visualization in a web app with HoloViews)
+## YouTube Video
+[Data Visualization in a Web Appplication with HoloViews (in Russian)](https://www.youtube.com/watch?v=tjY73jE2EiY)
 
 ## Environment set-up
 It is recommended that you create a virtual environment.
