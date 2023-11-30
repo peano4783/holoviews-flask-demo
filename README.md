@@ -1,9 +1,6 @@
 # HoloViews + Flask mini-tutorial
 HoloViews data visualization in a Flask web app
 
-## YouTube Video
-[Data Visualization in a Web Appplication with HoloViews (in Russian)](https://www.youtube.com/watch?v=tjY73jE2EiY)
-
 ## Environment set-up
 It is recommended that you create a virtual environment.
 
@@ -78,3 +75,4 @@ in real-life data visualization and analysis.
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Flask Mega-Tutorial by Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
 - [Creating Charts with Bokeh and Flask](https://www.gcptutorials.com/post/creating-charts-with-bokeh-and-flask)
+<!-- [YouTube Video (in Russian)](https://www.youtube.com/watch?v=tjY73jE2EiY) -->
